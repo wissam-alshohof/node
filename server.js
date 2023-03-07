@@ -21,17 +21,17 @@ function rqListner(req, res) {
     </body>
     </html>
     `);
-    res.end();
+    return res.end();
  } else { 
     console.log('request',{req});
     // res.write(`<head>${JSON.parse(req)} </head>`);
     res.end();
  }
 
-// process.exit();
-// res.setHeader('Content-Type', 'application/json');
-// res.write(JSON.stringify({"Hello":"world!"}));
-// res.end();
+process.exit();
+res.setHeader('Content-Type', 'application/json');
+res.write(JSON.stringify({"Hello":"world!"}));
+res.end();
 }
 const server = http.createServer(rqListner);
 
