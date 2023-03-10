@@ -29,15 +29,18 @@ function rqListner(req, res) {
         console.log({chunk});
         body.push(chunk)
     });
-    req.on('end', () => {
+    return req.on('end', () => {
         const parsedBody  = Buffer.concat(body).toString();
-        fs.writeFileSync('message.txt', parsedBody.split('=')[1].replace('+', ' '));
+        // fs.writeFileSync('message.txt', parsedBody.split('=')[1].replace('+', ' '));
+        fs.writeFile('message.txt', parsedBody.split('=')[1].replace('+', ' ') ,err => {
+
+            res.writeHead(302,['Location','/']);
+            return res.end();
+        });
     });
-    // res.statusCode = 302;
-    // res.setHeader('Location','/')
-    // res.write(`<head>${JSON.parse(req)} </head>`);
-    res.writeHead(302,['Location','/']);
-    return res.end();
+    res.statusCode = 302;
+    res.setHeader('Location','/')
+    res.write(`<head>${JSON.parse(req)} </head>`);
  }
 
 // process.exit();
