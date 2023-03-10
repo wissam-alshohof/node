@@ -1,4 +1,5 @@
 const http = require('http');
+const fs  = require('fs');
 /**
  * 
  * @param {http.IncomingMessage} req 
@@ -14,21 +15,32 @@ function rqListner(req, res) {
     <style> * { box-sizing:border-box;}</style>
     </head>
     <body>
-    <form method="post" style="color:green;box-shadow:3px 3px grey;margin-left: 5px ;padding:10px;height:100%">
+    <form method="POST" action="/message" style="color:green;box-shadow:3px 3px grey;margin-left: 5px ;padding:10px;height:100%">
     <button type="submit">Enter text</button>
-    <input type="text" name="text" value="Enter text" />
+    <input type="text" name="text" placeholder="Enter text" />
     </form>
     </body>
     </html>
     `);
     return res.end();
- } else { 
-    console.log('request',{req});
+ } else if(req.url == '/message' && req.method == 'POST') { 
+    const body = [];
+    req.on('data', chunk => {
+        console.log({chunk});
+        body.push(chunk)
+    });
+    req.on('end', () => {
+        const parsedBody  = Buffer.concat(body).toString();
+        fs.writeFileSync('message.txt', parsedBody.split('=')[1].replace('+', ' '));
+    });
+    // res.statusCode = 302;
+    // res.setHeader('Location','/')
     // res.write(`<head>${JSON.parse(req)} </head>`);
-    res.end();
+    res.writeHead(302,['Location','/']);
+    return res.end();
  }
 
-process.exit();
+// process.exit();
 res.setHeader('Content-Type', 'application/json');
 res.write(JSON.stringify({"Hello":"world!"}));
 res.end();
