@@ -55,26 +55,19 @@ server.listen(5500);
 const http = require('http');
 const express = require('express');
 
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+
 const app = express();
 const log = require('./console');
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({extended: false}))
-app.use('/products',(req,res,next) => {
-    res.send('<body><form action="/list" method="POST"> <input name="product" type="text" /><button type="submit">send</button></form></body>')
-})
 
-app.post('/list',(req,res,next) => {
-    res.send(`<h1>${req.body['product']}</h1>`)
-})
+app.use(adminRoutes);
+app.use(shopRoutes);
 
-app.use('/',(req,  res, next ) => {
-    log(req.url);
-    res.status(401);
-    res.statusMessage = 'hi'
-    log('first middleware', 'still first middleWARE', 'same');
-    res.redirect('/products');
-    // res.send('<head><title>Node Js</title></head>')
-})
+app.use((req, res) => res.status(404).send('<h1>Page not found!</h1>'))
 
 app.listen(399)
 
