@@ -10,7 +10,7 @@ router.get('/products',(req,res,next) => {
 })
 
 router.post('/list',(req,res,next) => {
-    res.sendFile(__dirname,'..', 'views','shop.html')
+    res.sendFile(path.join(__dirname,'..', 'views','shop.html'))
 })
 
 module.exports = router;

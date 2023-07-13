@@ -58,6 +58,8 @@ const express = require('express');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
+const path = require('path');
+
 
 const app = express();
 const log = require('./console');
@@ -67,7 +69,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res) => res.status(404).sendFile(__dirname,'views/page-not-found.html'))
+app.use((req, res) => res.status(404).sendFile(path.join(__dirname,'views/page-not-found.html')))
 
 app.listen(399)
 
