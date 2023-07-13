@@ -1,15 +1,16 @@
 const express = require('express');
 
 const router = express.Router();
+const path = require('path');
 
 
 
 router.get('/products',(req,res,next) => {
-    res.send('<body><form action="/admin/list" method="POST"> <input name="product" type="text" /><button type="submit">send</button></form></body>')
+    res.sendFile(path.join(__dirname,'..','views','add-product.html'))
 })
 
 router.post('/list',(req,res,next) => {
-    res.send(`<h1>${req.body['product']}</h1>`)
+    res.sendFile(__dirname,'..', 'views','shop.html')
 })
 
 module.exports = router;
