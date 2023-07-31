@@ -4,3 +4,30 @@ body {
     background-color: black;
     color: wheat;
 }
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 4rem);
+    box-sizing: border-box;
+    margin: 2rem;
+    padding: 2rem;
+    gap: .25rem;
+    box-shadow: 1px 1px 10px 1px cyan, -5px -5px 20px 0px crimson
+}
+
+.item {
+    display: flex;
+    position: relative;
+    border: 1px solid white;
+    border-radius: .5rem;
+    flex-grow: .8;
+    padding: .25rem;
+}
+.item::after {
+    content: '>';
+    position: absolute;
+    left: -1%;
+    bottom: 50%;
+    translate: -50% 50%;
+}
