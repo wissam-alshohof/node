@@ -64,13 +64,17 @@ const path = require('path');
 const app = express();
 const log = require('./console');
 const bodyParser= require('body-parser')
+const myProducts = [];
+
+app.set('view engine', 'pug');
+app.set('views', 'views')
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static('./public'))
 
 app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res) => res.status(404).sendFile(path.join(__dirname,'views/page-not-found.html')))
+app.use((req, res) => res.status(404).render('page-not-found'))
 
 app.listen(399)
 

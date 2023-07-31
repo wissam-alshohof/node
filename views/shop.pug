@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Shop
+        link(rel="stylesheet", href="/css/main.css")
+    body
+        header
+            nav
+                ul
+                    li
+                        a(href="/admin/products") Add Product With Pug
+                    li 
+                        a(href="/admin/list") Shop 
+
+        main 
+            h1 My Products
+            if products && products.length
+                .items-container
+                    each product in products
+                        p.item #{product.title}
+            else 
+                h2 No Products added

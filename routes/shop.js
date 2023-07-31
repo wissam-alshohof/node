@@ -9,7 +9,7 @@ shopRouter.get('/',(req,  res, next ) => {
     log(req.url);
     res.status(401);
     res.statusMessage = 'hi'
-    res.redirect('admin/products');
+    res.redirect('/admin/products');
 });
 
 module.exports = shopRouter;
