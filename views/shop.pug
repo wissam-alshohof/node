@@ -1,15 +1,6 @@
 extends layouts/main-layout.pug
 
-//- mixin title("Shop")
 block content 
-    header
-        nav
-            ul
-                li
-                    a(href="/admin/products") Add Product With Pug
-                li 
-                    a(href="/admin/list") Shop 
-
     main 
         h1 My Products
         if products && products.length

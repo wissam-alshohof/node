@@ -74,7 +74,7 @@ app.use(express.static('./public'))
 app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res) => res.status(404).render('page-not-found'))
+app.use((req, res) => res.status(404).render('page-not-found', {title: "Page Not Found!"}))
 
 app.listen(399)
 

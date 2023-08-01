@@ -9,7 +9,7 @@ const store = require(path.join(routeDir , '/utils/store'));
 router.get('/products',(req,res,next) => {
     // res.sendFile(path.join(__dirname,'..','views','add-product.html'))
     // res.sendFile(path.join(routeDir,'views','add-product.html'))
-    res.render('add-product');
+    res.render('add-product',{title: "ADD Products"});
 })
 router.post('/list',(req,res,next) => {
     console.log({store})
@@ -19,7 +19,7 @@ router.post('/list',(req,res,next) => {
     next();
 });
 
-router.use('/list', (req,res) => res.render('shop',{products:store.products}))
+router.use('/list', (req,res) => res.render('shop',{title:"Shop", products:store.products}))
 
 
 module.exports = router;
