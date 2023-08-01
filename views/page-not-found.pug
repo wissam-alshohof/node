@@ -1,9 +1,5 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Page not found
-        link(rel="stylesheet", href="/css/main.css")
-    body 
-        h3(style="color: red;") Page not Found
+extends layouts/main-layout.pug 
+
+//- mixin title("Page Not Found")
+block content 
+    h3(style="color: red;") Page not Found
