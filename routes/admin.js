@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const routeDir = require('./../utils/path');
 const path = require('path');
+const log = require('../console');
 const store = require(path.join(routeDir , '/utils/store'));
 
 
@@ -19,7 +20,6 @@ router.post('/list',(req,res,next) => {
     next();
 });
 
-router.use('/list', (req,res) => res.render('shop',{title:"Shop", products:store.products}))
-
+router.use('/list', (req,res) => res.render('shop',{title:"Shop", products:store.products, productsExist:store.products.length}))
 
 module.exports = router;

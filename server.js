@@ -66,8 +66,15 @@ const log = require('./console');
 const bodyParser= require('body-parser')
 const myProducts = [];
 
-app.set('view engine', 'pug');
-app.set('views', 'views')
+const hbs = require('express-handlebars');
+/** //! We need to define the handlebars engine as our engine template
+ *  since it's not there by default as the case of pug 
+*/
+//{layoutsDir: 'views',defaultLayout:path.join(__dirname,'views','layouts','main'), extname:'hbs', }
+app.engine('hbs',hbs.engine({extname:'hbs'}));
+// app.set('view engine', 'pug');
+app.set('view engine', 'hbs');
+app.set('views', './views')
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static('./public'))
 
