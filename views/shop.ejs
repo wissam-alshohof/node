@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
@@ -22,16 +24,16 @@
     <main>
         <h1>My Products</h1>
         <% if(products.length) { %>
-        <div class="items-container">
-            <% for(let product of products) {%>
-            <p class="item">
-                <%= product.title%>
-            </p>
-            <% }%>
-        </div>
-        <% } else { %>
-            <h3>No products added..</h3>
-            <% }%>
+            <div class="items-container">
+                <% for(let product of products) {%>
+                    <p class="item">
+                        <%= product.title%>
+                    </p>
+                    <% }%>
+            </div>
+            <% } else { %>
+                <h3>No products added..</h3>
+                <% }%>
     </main>
 </body>
 

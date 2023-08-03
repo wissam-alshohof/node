@@ -63,7 +63,7 @@ const path = require('path');
 
 const app = express();
 const log = require('./console');
-const bodyParser= require('body-parser')
+const bodyParser = require('body-parser')
 const myProducts = [];
 
 // const hbs = require('express-handlebars');
@@ -76,13 +76,13 @@ const myProducts = [];
 // app.set('view engine', 'hbs');
 app.set('view engine', 'ejs');
 app.set('views', './views')
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('./public'))
 
-app.use('/admin',adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res) => res.status(404).render('page-not-found', {title: "Page Not Found!"}))
+app.use((req, res) => res.status(404).render('page-not-found', { title: "Page Not Found!" }))
 
 app.listen(399)
 
