@@ -1,6 +1,7 @@
 const pathSetter = require('../utils/path');
-const store = require(pathSetter('utils/store'));
-const log = require(pathSetter('console'))
+const log = require(pathSetter('console'));
+
+const Product = require(pathSetter('models/product'));
 
 exports.getAddProduct = (req, res, next) => {
     // res.sendFile(path.join(__dirname,'..','views','add-product.html'))
@@ -9,11 +10,12 @@ exports.getAddProduct = (req, res, next) => {
 }
 
 exports.postAddProducts = (req, res, next) => {
-    store.setProduct({ title: req.body.product })
+    const newProduct = new Product(req.body.product);
+    newProduct.save();
     next();
 }
 
-exports.useAddProducts = (req, res) => res.render('shop', { title: "Shop",activeRoute: 'shop', products: store.products, productsExist: store.products.length });
+exports.useAddProducts = (req, res) => res.render('shop', { title: "Shop", activeRoute: 'shop', products: Product.getAll(), productsExist: Product.getAll().length });
 
 
 exports.getShop = (req, res, next) => {
