@@ -1,8 +1,8 @@
 <header>
     <nav>
         <ul>
-            <li><a href="/">Shop</a></li>
-            <li><a class="<% if( title == 'ADD Products' ) 'active' %>" href="/admin/products">Add Product</a></li>
+            <li><a class="<%= activeRoute == 'shop' ? 'active' : '' %>"href="/admin/list">Shop</a></li>
+            <li><a class="<%= activeRoute == 'addProducts' ? 'active' : '' %>" href="/admin/products">Add Product</a></li>
         </ul>
     </nav>
 </header>

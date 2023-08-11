@@ -15,16 +15,19 @@ body {
     gap: .25rem;
     box-shadow: 1px 1px 10px 1px cyan, -5px -5px 20px 0px crimson
 }
+
 ul, a {
     all: unset;
     color: cyan;
 }
+
 li {
     all: unset;
     padding: .5rem;
     display: inline-block;
     margin: 2rem 1rem 1rem 0;
     padding-left: 0;
+
     &:hover {
         background-color: crimson;
         cursor: pointer;
@@ -32,6 +35,7 @@ li {
         transition: all .5s ease-out;
     }
 }
+
 .item {
     display: flex;
     position: relative;
@@ -40,6 +44,7 @@ li {
     flex-grow: .8;
     padding: .25rem;
 }
+
 .item::after {
     content: '>';
     position: absolute;
@@ -50,5 +55,6 @@ li {
 
 .active {
     color: white;
-text-decoration: underline;
+    text-decoration: underline;
+    transition: all;
 }

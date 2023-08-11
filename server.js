@@ -62,9 +62,9 @@ const path = require('path');
 
 
 const app = express();
-const log = require('./console');
-const bodyParser = require('body-parser')
-const myProducts = [];
+const bodyParser = require('body-parser');
+
+const pageNotFoundController = require('./controllers/404') 
 
 // const hbs = require('express-handlebars');
 /** //! We need to define the handlebars engine as our engine template
@@ -82,7 +82,7 @@ app.use(express.static('./public'))
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res) => res.status(404).render('page-not-found', { title: "Page Not Found!" }))
+app.use('/',pageNotFoundController.get404);
 
 app.listen(399)
 

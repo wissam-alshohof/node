@@ -1,0 +1,1 @@
+exports.get404 = (req, res) => res.status(404).render('page-not-found', { title: "Page Not Found!" });
